@@ -1,2 +1,2 @@
-# jenkins-shared-library
+# jsl-example
 Jenkins Shared Library Example
