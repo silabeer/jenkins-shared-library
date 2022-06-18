@@ -10,13 +10,11 @@ import static groovy.test.GroovyAssert.*
 class HttpsRequestTest {
   def http
   def json
-  def var 
 
   @Before
   void setUp() {
     http = new HttpsRequest()
     json = new JsonSlurper()
-    http.setTestMode(true)
   }
 
   @Test

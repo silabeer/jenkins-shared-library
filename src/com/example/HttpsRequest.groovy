@@ -9,18 +9,6 @@ import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 
 class HttpsRequest {
-  private boolean testMode = false
-  TrustManager[] trustAllCerts = [new X509TrustManager() {
-    void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
-
-    void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
-
-    X509Certificate[] getAcceptedIssuers() {return new X509Certificate[0]}
-  }]
-
-  def setTestMode(boolean test) {
-    this.testMode = test
-  }
 
   def get(String uri) {
     httpInternal(uri, null, false)
@@ -34,13 +22,7 @@ class HttpsRequest {
     def response = [:]
     def error
     try {
-
-      if (testMode) {
-        SSLContext sc = SSLContext.getInstance("TLS")
-        sc.init(null, trustAllCerts, new java.security.SecureRandom())
-        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory())
-      }
-
+      
       def http = new URL(uri).openConnection() as HttpsURLConnection
       if (isPost) {
         http.setRequestMethod('POST')
