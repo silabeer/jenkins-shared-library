@@ -15,6 +15,5 @@ def sendMessage(env, Map config = [:]) {
     def telegramText = new SimpleTemplateEngine().createTemplate(message).make(bindMap)
     steps.println "Start send message to Telegram"
     steps.sh "curl -s -X POST https://api.telegram.org/bot$token/sendMessage -d chat_id=$chatID -d text=\"$telegramText\""
-    steps.println "End send message to Telegram"
    }
 }
