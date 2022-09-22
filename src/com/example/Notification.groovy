@@ -15,4 +15,10 @@ def sendMessage(Map config = [:]) {
     steps.sh "curl -s -X POST https://api.telegram.org/bot$token/sendMessage -d chat_id=$chatID -d text=\"$message\""
     steps.println "End send message to Telegram"
    }
+
+def readPropFile() {
+    def scriptcontents = libraryResource "test.properties" 
+    def props = readProperties text: propFileContent
+    steps.println props.chatID
+}
 }
