@@ -1,14 +1,17 @@
 package com.example
 
 class Notification {
-    String name
-    Integer age
+    String token
+    String message
+    String chatID
+    
     def steps
     Notification(steps) {
         this.steps = steps
     }
-   def increaseAge(Integer years) {
-      this.age += years
-      steps.println "Hello from Telegram"
+   def sendMessage(chatID,token,message) {
+      steps.println "Start send message to Telegram"
+      sh "curl -v https://api.telegram.org"
+      steps.println "End send message to Telegram"
    }
 }
