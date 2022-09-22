@@ -7,12 +7,13 @@ def steps
     Notification(steps) {
         this.steps = steps
     }
-def sendMessage(env,Map config = [:]) {
+def sendMessage(env, Map config = [:]) {
     def token = config.token
     def chatID = config.chatID ?: '123123123'    
     def message = steps.libraryResource 'message'
     def bindMap = [buildID: env.BUILD_NUMBER, logs: env.BUILD_URL]
     def telegramText = new SimpleTemplateEngine().createTemplate(message).make(bindMap)
+    steps.println telegramText
     steps.println "Start send message to Telegram"
     steps.sh "curl -s -X POST https://api.telegram.org/bot$token/sendMessage -d chat_id=$chatID -d text=\"$telegramText\""
     steps.println "End send message to Telegram"
