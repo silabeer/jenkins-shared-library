@@ -18,7 +18,7 @@ def sendMessage(Map config = [:]) {
 
 def readPropFile() {
     def scriptcontents = libraryResource 'test.properties'
-    //def props = readProperties text: scriptcontents
-    steps.sh "cat $scriptcontents"
+    writeFile file: "test.properties", text: scriptcontents 
+    steps.sh "cat test.properties"
 }
 }
