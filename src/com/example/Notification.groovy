@@ -19,6 +19,6 @@ def sendMessage(Map config = [:]) {
 def readPropFile() {
     def scriptcontents = steps.libraryResource 'test.properties'
     def props = readProperties text: scriptcontents
-    steps.println props.chatID
+    steps.println props
 }
 }
