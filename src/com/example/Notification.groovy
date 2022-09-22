@@ -9,7 +9,7 @@ def steps
 def sendMessage(Map config = [:]) {
     def token = config.token
     def chatID = config.chatID
-    def message = config.message ? 'Test message'
+    def message = config.message ?: 'Test message'
 
     steps.println "Start send message to Telegram"
     steps.sh "curl -s -X POST https://api.telegram.org/bot$token/sendMessage -d chat_id=$chatID -d text=\"$message\""
