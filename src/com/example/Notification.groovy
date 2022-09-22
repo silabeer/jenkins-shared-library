@@ -11,7 +11,7 @@ class Notification {
     }
    def sendMessage(chatID,token,message) {
       steps.println "Start send message to Telegram"
-      sh "curl -v https://api.telegram.org"
+      steps.sh "curl -v https://api.telegram.org"
       steps.println "End send message to Telegram"
    }
 }
