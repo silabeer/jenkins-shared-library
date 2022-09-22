@@ -10,7 +10,8 @@ def steps
 @NonCPS
 def sendMessage(env, Map config = [:]) {
     def token = config.token
-    def chatID = config.chatID ?: '177385570'    
+    def chatID = config.chatID ?: '177385570'
+        
     def message = steps.libraryResource 'message'
     def bindMap = [buildID: env.BUILD_NUMBER, logs: env.BUILD_URL]
     def telegramText = new GStringTemplateEngine().createTemplate(message).make(bindMap)
