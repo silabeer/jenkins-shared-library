@@ -1,10 +1,10 @@
 package com.example
 
-class Telegram {
+class Notification {
     String name
     Integer age
     def steps
-    Telegram(steps) {
+    Notification(steps) {
         this.steps = steps
     }
    def increaseAge(Integer years) {
